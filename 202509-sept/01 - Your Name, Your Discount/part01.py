@@ -10,21 +10,24 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the shared utilities directly
 import shared_utils
+from collections import Counter
 
 def parse_data(filepath):
     """Reads a file and returns its content as a list of lines."""
     data = shared_utils.read_file_to_array(filepath)
-    return data
+    return int(data[0]), data[1:]
 
 
 def execute():
     """Main execution function for this module."""
-    # Use absolute path relative to the current file's directory
-    filepath = os.path.join(os.path.dirname(__file__), "sample01.txt")
-    file_data = parse_data(filepath)
+    filepath = os.path.join(os.path.dirname(__file__), "problem-sep-25-long-A-input.txt")
+    input_size, file_data = parse_data(filepath)
+    output_filepath = os.path.join(os.path.dirname(__file__), "problem-sep-25-long-A-output.txt")
     print(f"File data from {filepath}:")
-    for line in file_data:
-        print(f" - {line}")
+    with open(output_filepath, "w") as output_file:
+        for idx in range(0, input_size):
+            char_counts = Counter((file_data[idx][0].lower() + file_data[idx][1:]))
+            output_file.write(f"Case #{idx+1}: {100 - (len(char_counts) * 5)}\n")
 
 
 if __name__ == "__main__":
