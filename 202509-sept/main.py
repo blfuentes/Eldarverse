@@ -20,7 +20,8 @@ def main():
 
     # Run all parts
     parts = [
-        ("01 - Your Name, Your Discount", "part01.py"),
+        ("01 - Your Name, Your Discount", "solution.py"),
+        ("02 - Sparse Rankings", "solution.py"),
     ]
     
     for part_name, part_file in parts:

@@ -1,5 +1,5 @@
 """
-Part 01 module - Your Name, Your Discount
+Solution module - Your Name, Your Discount
 """
 
 import os
@@ -32,5 +32,5 @@ def execute():
 
 if __name__ == "__main__":
     # This code runs only when the file is executed directly
-    print("Running part01.py directly...")
+    print("Running solution.py directly...")
     execute()
