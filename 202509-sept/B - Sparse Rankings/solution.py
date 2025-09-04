@@ -38,10 +38,10 @@ def calculate_point_differences(T):
     initial_points = tuple([0] * T)
     dp = {initial_points: 1}
 
-    num_games = len(games)
+    # num_games = len(games)
     # Iterate through each game, updating the DP table
     for i, (home_team, away_team) in enumerate(games):
-        print(f"    Processing game {i + 1}/{num_games} for T={T}. DP states: {len(dp)}")
+        # print(f"    Processing game {i + 1}/{num_games} for T={T}. DP states: {len(dp)}")
         new_dp = Counter()
         for points_tuple, count in dp.items():
             points = list(points_tuple)
@@ -71,25 +71,25 @@ def calculate_point_differences(T):
 def execute():
     """Main execution function for this module."""
     # Pre-calculate differences for T from 2 to 6
-    print("Pre-calculating point differences...")
+    # print("Pre-calculating point differences...")
     precalculated_differences = {}
     for T in range(2, 7):
-        print(f"  Calculating for {T} teams...")
+        # print(f"  Calculating for {T} teams...")
         differences = calculate_point_differences(T)
         differences.sort()  # Sort the list for binary search
         precalculated_differences[T] = differences
-    print("Pre-calculation complete.")
+    # print("Pre-calculation complete.")
 
     # filepath = os.path.join(os.path.dirname(__file__), "sample01.txt")
     filepath = os.path.join(os.path.dirname(__file__), "problem-sep-25-long-B-input.txt")
     input_size, file_data = parse_data(filepath)
     output_filepath = os.path.join(os.path.dirname(__file__), "problem-sep-25-long-B-output.txt")
     
-    print(f"Processing data from {filepath}...")
+    # print(f"Processing data from {filepath}...")
     with open(output_filepath, "w") as output_file:
         for idx in range(input_size):
-            if (idx + 1) % 1000 == 0:
-                print(f"  Processing case {idx + 1}/{input_size}...")
+            # if (idx + 1) % 1000 == 0:
+            #     print(f"  Processing case {idx + 1}/{input_size}...")
             try:
                 # file_data is already a list of [T, min_diff] pairs
                 T = file_data[idx][0]
@@ -107,13 +107,6 @@ def execute():
                 output_file.write(f"Case #{idx+1}: Invalid input\n")
     
     print(f"Output successfully written to {output_filepath}")
-    
-    # print(f"File data from {filepath}:")
-    # with open(output_filepath, "w") as output_file:
-    #     for idx in range(0, input_size):
-    #         char_counts = Counter((file_data[idx][0].lower() + file_data[idx][1:]))
-    #         output_file.write(f"Case #{idx+1}: {100 - (len(char_counts) * 5)}\n")
-
 
 if __name__ == "__main__":
     # This code runs only when the file is executed directly

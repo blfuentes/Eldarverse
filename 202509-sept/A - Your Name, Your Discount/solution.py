@@ -28,7 +28,7 @@ def execute():
         for idx in range(0, input_size):
             char_counts = Counter((file_data[idx][0].lower() + file_data[idx][1:]))
             output_file.write(f"Case #{idx+1}: {100 - (len(char_counts) * 5)}\n")
-
+    print(f"Output successfully written to {output_filepath}")
 
 if __name__ == "__main__":
     # This code runs only when the file is executed directly
